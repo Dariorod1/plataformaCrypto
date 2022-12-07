@@ -14,14 +14,14 @@ const profeRoutes = require("./profeRoutes");
 router.use("/users", userRoutes);
 router.use("/courses", courseRoutes);
 router.use(
-  "/auth",
+  "/auth",/*,
   passport.authenticate("auth-google", {
     scope: [
       "https://www.googleapis.com/auth/userinfo.profile",
       "https://www.googleapis.com/auth/userinfo.email",
     ],
     session: false,
-  }),
+  }),*/
   authRoutes
 );
 router.use("/profe", profeRoutes);

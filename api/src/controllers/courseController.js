@@ -15,7 +15,16 @@ const getAllCourses = async(req,res,next) => {
             message: "Algo esta mal"
         })
     }
+}
+const getCoursesById = async(req,res,next) => {
+    const id = req.params
+    try {
+        const curso = await Curso.findOne({where:id})
+        res.json(curso)
+    } catch (error) {
+        return next(error)
     }
+}
     //Función que crea un nuevo usuario
 const createCourse = async(req,res,next) => {
     const{nombre,precio,duracion,categoria,profesor} = req.body;
@@ -93,5 +102,6 @@ module.exports = {
     createCourse,
     deleteCourse,
     updateCourse,
-    getImageProfile
+    getImageProfile,
+    getCoursesById
 }
