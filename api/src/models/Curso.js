@@ -24,6 +24,18 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      modulos: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      contenido: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      descripcion: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     { timestamps: false }
   );
