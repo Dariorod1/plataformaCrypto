@@ -27,7 +27,7 @@ const getCoursesById = async(req,res,next) => {
 }
     //Función que crea un nuevo usuario
 const createCourse = async(req,res,next) => {
-    const{nombre,precio,duracion,categoria,profesor} = req.body;
+    const{nombre,precio,duracion,categoria,profesor,modulos,contenido,descripcion} = req.body;
     if (req.file) {
         var profile = req.file.filename;
         console.log(profile);
@@ -39,7 +39,10 @@ const createCourse = async(req,res,next) => {
             duracion,
             categoria,
             profesor,
-            imagen: profile
+            imagen: profile,
+            modulos,
+            contenido,
+            descripcion
         });
         return res.json({Curso: course, message: "Curso dado de alta correctamente"})
     } catch (error) {
@@ -64,7 +67,7 @@ const deleteCourse = async (req,res) => {
 
 const updateCourse = async (req, res) => {
     const { id } = req.params;
-    const { duracion,precio } = req.body;
+    const { duracion,precio,modulos,contenido,descripcion } = req.body;
     let courseFind = await Curso.findAll({ where: { id: id } });
   
     if (req.file) {
@@ -77,6 +80,9 @@ const updateCourse = async (req, res) => {
           precio,
           duracion,
           imagen: profile,
+          modulos,
+          contenido,
+          descripcion
         });
       });
       return res.json({
